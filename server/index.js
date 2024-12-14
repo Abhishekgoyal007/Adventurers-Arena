@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import dotenv from "dotenv";
 dotenv.config();
 
-const clientURL = process.env.VITE_CLIENT_URL;
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -28,10 +28,9 @@ app.use(
     credentials: true, 
   })
 );
-app.options('*', cors());
+app.options('*', cors())
 
 app.use(express.json());
-
 const Pieces = {
   Scout: {
     mv: 3,
