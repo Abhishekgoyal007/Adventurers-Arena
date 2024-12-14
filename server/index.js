@@ -7,21 +7,29 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const clientURL = process.env.VITE_CLIENT_URL;
-  const PORT = process.env.PORT || 3000; 
+const PORT = process.env.PORT || 3000;
 
-  const app = express();
-  const server = http.createServer(app);
+const app = express();
+const server = http.createServer(app);
 
-  const io = new Server(server, {
-    cors: {
-      origin: clientURL,
-      methods: ["GET", "POST"],
-    },
-    transports: ["websocket", "polling"], // Include both transports
-  });
-  
+const io = new Server(server, {
+  cors: {
+    origin: "*", 
+    methods: ["GET", "POST"],
+  },
+});
 
-app.use(cors());
+
+app.use(
+  cors({
+    origin:"*", 
+    methods: ["GET", "POST" ], 
+    headers: ["Content-Type"],
+    credentials: true, 
+  })
+);
+app.options('*', cors());
+
 app.use(express.json());
 
 const Pieces = {
