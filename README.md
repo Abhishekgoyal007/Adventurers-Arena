@@ -73,3 +73,9 @@ Shows the skins that are provided through some web3 collaboration. Right now the
 
 ## Registering the winner
 If both players have their wallet connected, then after one player wins, both players can choose to agree and register the winning of the winner on blockchain. The option is provided on the same screen which shows who won after the game ends.
+
+
+## The Contract
+The contract is 0x5ad40C3a3FD63267Ca07Bd300C5381080E9e5645 on shape sepolia testnet.    
+Here is the link of block explorer : https://explorer-sepolia.shape.network/address/0x5ad40C3a3FD63267Ca07Bd300C5381080E9e5645     
+The code is set up to make sure even though the contract and connection are to shape sepolia, the checking of Shape Keys NFTs happen through Shape Mainnet.
