@@ -7,7 +7,7 @@ interface DisplayCardProps {
     return (
       <div className="card" >
         <img src={image} alt={title} />
-        <h3>{title}</h3>
+        <h3 className="merienda-regular">{title}</h3>
       </div>
     );
   };

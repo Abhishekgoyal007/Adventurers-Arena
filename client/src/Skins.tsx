@@ -3,7 +3,11 @@ import BuyCard from './components/BuyCard';
 import DisplayCard from "./components/DisplayCard";
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from './Context';
-import k2 from './assets/k2.jpg';
+import KnCHR from './assets/KnChr.jpg';
+import TnCHR from "./assets/TnCHR.jpg";
+import ScCHR from "./assets/ScCHR.jpg";
+import MgCHR from "./assets/MgCHR.jpg";
+import HlCHR from "./assets/HlCHR.jpg";
 import map2 from './assets/map2.jpeg';
 import SkinsBg from "./assets/skins.jpeg";
 
@@ -14,11 +18,16 @@ interface Item {
 }
 
 const buyableSkins: { [key: string]: { image: string; title: string; category: string } } = {
-  k2: { image: k2, title: 'Knight of Valor', category: "KnightCard" },
+  KnCHR: { image: KnCHR, title: 'Knight of Christmas', category: "KnightCard" },
+  TnCHR: { image: TnCHR, title: 'Tank of Christmas', category: "TankCard" },
+  ScCHR: { image: ScCHR, title: 'Scout of Christmas', category: "ScoutCard" },
+  MgCHR: { image: MgCHR, title: 'Mage of Christmas', category: "MageCard" },
+  HlCHR: { image: HlCHR, title: 'Healer of Christmas', category: "HealerCard" },
 };
+
+
 const collabSkins: { [key: string]: { image: string; title: string; category: string } } = {
   map2: { image: map2, title: 'Depth of Fire', category: "Map" },
-  k2: { image: k2, title: 'Knight of Valor', category: "KnightCard" },
 };
 
 const Skins: React.FC = () => {
@@ -145,7 +154,7 @@ const Skins: React.FC = () => {
                           ? chooseBoughtSkin(key, image)
                           : handleBuy(item.id, item.price)
                       }
-                      buttonText={isBought ? "Select" : `Buy ${item.price}`}
+                      buttonText={isBought ? "Select" : `${item.price} wei`}
                     />
                   );
                 }

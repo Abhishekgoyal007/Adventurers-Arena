@@ -492,7 +492,7 @@ export default function Board({socket}: BoardProps ) {
                 return (
                   <div key={`player-${index}`} onClick={() => handlePieceButtonClick(name, canDeploy)} className="board-piece-container">
                     {shouldShowHealButton && (
-                      <button onClick={(e) => {e.stopPropagation();handleHeal(name);}} className="board-heal-button">
+                      <button onClick={(e) => {e.stopPropagation();handleHeal(name);}} className="board-heal-button merienda-regular">
                         Heal
                       </button>
                     )}

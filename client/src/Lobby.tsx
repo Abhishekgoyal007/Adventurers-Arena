@@ -3,49 +3,95 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Socket } from 'socket.io-client';
 import LobbyBg from "./assets/lobby.jpeg";
-const serverURL = import.meta.env.VITE_SERVER_URL; // For Vite projects
+const serverURL = import.meta.env.VITE_SERVER_URL;
 
 interface LobbyProps {
   socket: Socket;
 }
 
 import contractABI from './abi.json';
-import { useAppContext } from './Context'; // Import context
+import { useAppContext } from './Context';
 import { ethers } from 'ethers';
 declare global {
   interface Window {
     ethereum?: any;
   }
 }
-const contractAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'; // Provided contract address
+const contractAddress = '0x5ad40C3a3FD63267Ca07Bd300C5381080E9e5645'; // deployed contract address
 
 
 function Lobby({ socket }: LobbyProps) {
   const [roomCode, setRoomCode] = useState('');
   const [error, setError] = useState('');
-  const {account, setAccount, setContract, checkShapeKey } = useAppContext(); // Access context
+  const {account, setAccount, setContract, checkShapeKey } = useAppContext();
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
+
   const connectWallet = async () => {
+    const desiredChainId = '0x2b03';
+  
     if (window.ethereum) {
       try {
         setLoading(true);
+
+        const currentChainId = await window.ethereum.request({ method: 'eth_chainId' });
+        console.log('Current chain ID:', currentChainId);
+        console.log('Desired chain ID:', desiredChainId);
+  
+        if (currentChainId !== desiredChainId) {
+          try {
+            await window.ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: desiredChainId }],
+            });
+          } catch (switchError) {
+            if ((switchError as any).code === 4902) {
+              try {
+                await window.ethereum.request({
+                  method: 'wallet_addEthereumChain',
+                  params: [
+                    {
+                      chainId: desiredChainId,
+                      chainName: 'Shape Sepolia Testnet',
+                      rpcUrls: ['https://sepolia.shape.network'],
+                      nativeCurrency: {
+                        name: 'Ethereum',
+                        symbol: 'ETH',
+                        decimals: 18,
+                      },
+                      blockExplorerUrls: ['https://explorer-sepolia.shape.network'],
+                    },
+                  ],
+                });
+              } catch (addError) {
+                console.error('Error adding new chain:', addError);
+                setLoading(false);
+                return;
+              }
+            } else {
+              console.error('Error switching chain:', switchError);
+              setLoading(false);
+              return;
+            }
+          }
+        }
+  
         const [selectedAccount] = await window.ethereum.request({
           method: 'eth_requestAccounts',
         });
-
+  
         const provider = new ethers.BrowserProvider(window.ethereum);
         await provider.ready;
-
+  
         const signer = await provider.getSigner();
-
+  
         const contractInstance = new ethers.Contract(
           contractAddress,
           contractABI,
           signer
         );
-
+  
         setAccount(selectedAccount);
         setContract(contractInstance);
         setLoading(false);
@@ -58,6 +104,7 @@ function Lobby({ socket }: LobbyProps) {
       alert('Please install MetaMask or an Ethereum-compatible wallet.');
     }
   };
+  
 
   const handleCreateRoom = async () => {
     try {
