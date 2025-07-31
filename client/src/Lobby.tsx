@@ -53,14 +53,14 @@ function Lobby({ socket }: LobbyProps) {
                   params: [
                     {
                       chainId: desiredChainId,
-                      chainName: 'Shape Sepolia Testnet',
-                      rpcUrls: ['https://sepolia.shape.network'],
+                      chainName: 'Etherlink Testnet',
+                      rpcUrls: ['https://etherlink-testnet.rpc.thirdweb.com/'],
                       nativeCurrency: {
                         name: 'Ethereum',
                         symbol: 'ETH',
                         decimals: 18,
                       },
-                      blockExplorerUrls: ['https://explorer-sepolia.shape.network'],
+                      blockExplorerUrls: ['https://testnet-explorer.etherlink.com'],
                     },
                   ],
                 });

@@ -8,7 +8,6 @@ https://vimeo.com/1039377287?share=copy
 ## Key Features
 - **2-Player Gameplay** 
 - **Unique Adventurer Roles and Abilities of Pieces**
-- **Shape chain integration** 
 
 ## Objective
 The goal is to strategically maneuver your pieces and place one on your opponent's base to win the game.
@@ -22,7 +21,7 @@ The goal is to strategically maneuver your pieces and place one on your opponent
 ## Technologies Used
 - **Frontend:** Vite ( React )
 - **Backend:** Node.js, Express.js, Socket.io
-- **Blockchain:** Foundry ( Contract deployed on Shape )
+- **Blockchain:** Foundry
 - **Smart contract Connection:** Ethers.js
 
 
@@ -30,8 +29,8 @@ The goal is to strategically maneuver your pieces and place one on your opponent
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ShivRaiGithub/adventurers-arena
-   cd adventurers-arena
+   git clone <repo-address>
+   cd <repo-name>
    ```
 2. Split terminal into 2 ( For client and server )
 3. Terminal 1 and 2 both: Install dependencies
@@ -63,7 +62,7 @@ The goal is to strategically maneuver your pieces and place one on your opponent
 A player can create room and get the room code which can then be shared with the other player, and both can jump into a game.
 
 ## Connect Wallet and Skins
-A player can choose to connect their wallet. The code is set up to connect to shape sepolia since the contract was deployed on that. Although it is also set to ask permission to add the testnet if not present in user's metamask, iff facing issue, make sure to add and switch to shape sepolia testnet before connecting wallet. Else if connected wallet but not on shape sepolia, you will be able to see current skins and the ones for collab but will be unable to buy the skins through smart contract.
+A player can choose to connect their wallet. The code is set up to connect to etherlink testnet . Although it is also set to ask permission to add the testnet if not present in user's metamask, if facing issue, make sure to add and switch to etherlink testnet before connecting wallet. Else if connected wallet but not on etherlink testnet, you will be able to see current skins and the ones for collab but will be unable to buy the skins through smart contract.
 
 ### Current skins
 Shows the current equipped skins of the player. Go to lobby, reload page, and come back if you want to change to default skins after changing the skins.
@@ -76,3 +75,7 @@ Shows the skins that are provided through some web3 collaboration. Right now the
 
 ## Registering the winner
 If both players have their wallet connected, then after one player wins, both players can choose to agree and register the winning of the winner on blockchain. The option is provided on the same screen which shows who won after the game ends.
+
+## Contract
+Contract address : 0x9E08806eaB4111322Df0Bb6186B0210F68346aAB   
+Deployed on Etherlink Testnet

@@ -33,6 +33,4 @@ contract DeployWithData is Script {
     }
 }
 
-// forge script script/Deploy.s.sol:DeployWithData --fork-url http://localhost:8545 --private-key $ANVIL_PRIVATE_KEY --broadcast
-
-// forge script script/Deploy.s.sol --rpc-url https://sepolia.shape.network --private-key $PRIVATE_KEY --broadcast
+// forge script script/Deploy.s.sol:DeployWithData --rpc-url etherlink-testnet.rpc.thirdweb.com --private-key $PRIVATE_KEY --broadcast
