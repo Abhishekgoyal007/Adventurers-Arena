@@ -17,7 +17,7 @@ declare global {
     ethereum?: any;
   }
 }
-const contractAddress = '0x5ad40C3a3FD63267Ca07Bd300C5381080E9e5645'; // deployed contract address
+const contractAddress = '0x9E08806eaB4111322Df0Bb6186B0210F68346aAB'; // deployed contract address
 
 
 function Lobby({ socket }: LobbyProps) {
@@ -29,7 +29,7 @@ function Lobby({ socket }: LobbyProps) {
 
 
   const connectWallet = async () => {
-    const desiredChainId = '0x2b03';
+    const desiredChainId = '0x1f47b';
   
     if (window.ethereum) {
       try {
